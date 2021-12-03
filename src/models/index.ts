@@ -1,4 +1,3 @@
-import { ContactSchema } from './Contact';
-import { UserSchema } from './User';
+import { DevicesSchema } from './Devices';
 
-export { UserSchema, ContactSchema };
+export { DevicesSchema };

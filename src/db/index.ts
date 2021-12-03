@@ -7,6 +7,7 @@ class Database {
   public mongoUrl = configuration.DATABASE_URL || '';
 
   public async connect(): Promise<void> {
+    console.log('Start connect to db ', this.mongoUrl);
     await mongoose.connect(this.mongoUrl, {
       useNewUrlParser: true,
       useUnifiedTopology: true,

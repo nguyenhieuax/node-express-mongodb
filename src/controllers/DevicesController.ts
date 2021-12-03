@@ -1,58 +1,59 @@
 /* eslint-disable require-jsdoc */
 import * as mongoose from 'mongoose';
 import { Request, Response } from 'express';
-import { UserSchema } from '../models';
+import { DevicesSchema } from '../models';
 
-const User = mongoose.model('User', UserSchema);
-export class UserController {
+const Devices = mongoose.model('DevicesSchema', DevicesSchema);
+
+export class DevicesController {
   public add(req: Request, res: Response): void {
-    const newUser = new User(req.body);
-    newUser.save((err, user) => {
+    const newDevice = new Devices(req.body);
+    newDevice.save((err, device) => {
       if (err) {
         res.send(err);
       }
-      res.json(user);
+      res.json(device);
     });
   }
 
   public getAll(req: Request, res: Response): void {
-    User.find({}, (err, user) => {
+    Devices.find({}, (err, device) => {
       if (err) {
         res.send(err);
       }
-      res.json(user);
+      res.json(device);
     });
   }
 
   public getByID(req: Request, res: Response): void {
-    User.findById(req.params.userId, (err, user) => {
+    Devices.findById(req.params.deviceId, (err: any, device: any) => {
       if (err) {
         res.send(err);
       }
-      res.json(user);
+      res.json(device);
     });
   }
 
   public update(req: Request, res: Response): void {
-    User.findOneAndUpdate(
-      { _id: req.params.userId },
+    Devices.findOneAndUpdate(
+      { _id: req.params.deviceId },
       req.body,
       { new: true },
-      (err, user) => {
+      (err, device) => {
         if (err) {
           res.send(err);
         }
-        res.json(user);
+        res.json(device);
       }
     );
   }
 
   public delete(req: Request, res: Response): void {
-    User.remove({ _id: req.params.userId }, (err) => {
+    Devices.remove({ _id: req.params.deviceId }, (err) => {
       if (err) {
         res.send(err);
       }
-      res.json({ message: 'Successfully deleted user!' });
+      res.json({ message: 'Successfully deleted device!' });
     });
   }
 }

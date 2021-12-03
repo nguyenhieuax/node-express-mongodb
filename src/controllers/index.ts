@@ -1,4 +1,3 @@
-import { ContactController } from './Contact';
-import { UserController } from './User';
+import { DevicesController } from './DevicesController';
 
-export { ContactController, UserController };
+export { DevicesController };

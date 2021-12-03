@@ -1,11 +1,9 @@
 /* eslint-disable require-jsdoc */
 import express, { Request, Response } from 'express';
-import { ContactsRoutes } from './Contact';
-import { UserRoutes } from './User';
+import { DevicesRoutes } from './Devices';
 
 export class Routes {
-  public contactsRoutes: ContactsRoutes = new ContactsRoutes();
-  public userRoutes: UserRoutes = new UserRoutes();
+  public devicesRoutes: DevicesRoutes = new DevicesRoutes();
 
   public initialize(app: express.Application): void {
     app.route('/').get((req: Request, res: Response) => {
@@ -14,8 +12,8 @@ export class Routes {
       });
     });
 
-    this.contactsRoutes.initialize(app);
-    this.userRoutes.initialize(app);
+    // list routes
+    this.devicesRoutes.initialize(app);
 
     app.route('*').get((req: Request, res: Response) => {
       res.status(200).send({

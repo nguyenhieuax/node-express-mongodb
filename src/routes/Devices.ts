@@ -1,18 +1,18 @@
-import { ContactController } from '../controllers';
+import { DevicesController } from '../controllers';
 import express from 'express';
 
 /* eslint-disable require-jsdoc */
-export class ContactsRoutes {
-  public contactController: ContactController = new ContactController();
+export class DevicesRoutes {
+  public contactController: DevicesController = new DevicesController();
 
   public initialize(app: express.Application): void {
     app
-      .route('/contact')
+      .route('/device')
       .get(this.contactController.getAll)
       .post(this.contactController.add);
 
     app
-      .route('/contact/:contactId')
+      .route('/device/:id')
       .get(this.contactController.getByID)
       .put(this.contactController.update)
       .delete(this.contactController.delete);
